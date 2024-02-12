@@ -41,3 +41,27 @@ Input.propTypes = {
   title: PropTypes.string,
   iconName: PropTypes.string,
 };
+
+const defaultStyles = StyleSheet.create({
+  container: {
+    width: '100%',
+  },
+  title: {
+    marginBottom: 4,
+    fontWeight: '700',
+  },
+  input: {
+    borderBottomWidth: 1,
+    borderRadius: 8,
+    height: 42,
+    paddingHorizontal: 10,
+  },
+  icon: {
+    position: 'absolute',
+    left: 8,
+    height: '100%',
+    justifyContent: 'center',
+  },
+});
+
+export default Input;
