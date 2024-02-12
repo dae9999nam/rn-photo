@@ -14,6 +14,7 @@ const SignInScreen = () => {
     <View style={styles.container}>
       <Text>Sign In</Text>
       <Input
+        styles={inputStyles}
         value={email}
         onChangeText={(text) => setEmail(text.trim())}
         inputType={InputTypes.EMAIL}
@@ -32,6 +33,16 @@ const SignInScreen = () => {
     </View>
   );
 };
+
+const inputStyles = StyleSheet.create({
+  container: {
+    marginBottom: 20,
+    paddingHorizontal: 20,
+  },
+  input: {
+    borderWidth: 1,
+  },
+});
 
 const styles = StyleSheet.create({
   container: {

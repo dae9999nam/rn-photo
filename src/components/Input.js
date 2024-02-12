@@ -2,7 +2,7 @@ import { StyleSheet, Text, TextInput, View } from 'react-native';
 import PropTypes from 'prop-types';
 import { forwardRef, useState } from 'react';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
-import { GRAY, BLACK, PRIMARY } from '../colors';
+import { GRAY, PRIMARY } from '../colors';
 
 export const ReturnKeyTypes = {
   DONE: 'done',
@@ -31,7 +31,7 @@ const InputTypeProps = {
   },
 };
 
-const Input = forwardRef(({ inputType, ...props }, ref) => {
+const Input = forwardRef(({ inputType, styles, ...props }, ref) => {
   const {
     title,
     placeholder,
@@ -43,12 +43,12 @@ const Input = forwardRef(({ inputType, ...props }, ref) => {
 
   const [isFocused, setIsFocused] = useState(false);
   return (
-    <View style={defaultStyles.container}>
+    <View style={(defaultStyles.container, styles?.container)}>
       <Text
-        style={
-          (defaultStyles.title,
-          { color: value || isFocused ? PRIMARY.DEFAULT : GRAY.DARK })
-        }
+        style={[
+          defaultStyles.title,
+          { color: value || isFocused ? PRIMARY.DEFAULT : GRAY.DARK },
+        ]}
       >
         {title}
       </Text>
@@ -67,12 +67,13 @@ const Input = forwardRef(({ inputType, ...props }, ref) => {
               borderColor: value || isFocused ? PRIMARY.DEFAULT : GRAY.DARK,
               color: value || isFocused ? PRIMARY.DEFAULT : GRAY.DARK,
             },
+            styles?.input,
           ]}
           textContentType="none"
           autoCapitalize="none"
           autoCorrect={false}
         />
-        <View style={defaultStyles.icon}>
+        <View style={[defaultStyles.icon, styles?.icon]}>
           <MaterialCommunityIcons
             name={isFocused ? active : inactive}
             size={24}
@@ -89,6 +90,7 @@ Input.displayName = 'Input';
 Input.propTypes = {
   inputType: PropTypes.oneOf(Object.values(InputTypes)).isRequired,
   value: PropTypes.string.isRequired,
+  styles: PropTypes.object,
 };
 
 const defaultStyles = StyleSheet.create({
