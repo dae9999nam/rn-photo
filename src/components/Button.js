@@ -48,3 +48,22 @@ Button.propTypes = {
   disabled: PropTypes.bool,
   isLoading: PropTypes.bool,
 };
+
+const defaultStyles = StyleSheet.create({
+  container: {
+    width: '100%',
+  },
+  button: {
+    paddingVertical: 20,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  title: {
+    color: WHITE,
+    fontSize: 16,
+    fontWeight: '700',
+    lineHeight: 20,
+  },
+});
+
+export default Button;
