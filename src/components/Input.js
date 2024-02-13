@@ -17,14 +17,14 @@ export const InputTypes = {
 const InputTypeProps = {
   EMAIL: {
     title: 'EMAIL',
-    placeholder: 'your@emailo.com',
+    placeholder: 'your@email.com',
     keyboardType: 'email-address',
     secureTextEntry: false,
     iconName: { active: 'email', inactive: 'email-outline' },
   },
   PASSWORD: {
     title: 'PASSWORD',
-    placeholder: 'PASSWROD',
+    placeholder: 'PASSWORD',
     keyboardType: 'default',
     secureTextEntry: true,
     iconName: { active: 'lock', inactive: 'lock-outline' },
@@ -42,6 +42,7 @@ const Input = forwardRef(({ inputType, styles, ...props }, ref) => {
   const { value } = props;
 
   const [isFocused, setIsFocused] = useState(false);
+
   return (
     <View style={(defaultStyles.container, styles?.container)}>
       <Text
