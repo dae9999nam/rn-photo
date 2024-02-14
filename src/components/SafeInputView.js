@@ -11,6 +11,16 @@ const SafeInputView = ({ children }) => {
     <KeyboardAvoidingView
       style={{ flex: 1 }}
       behavior={Platform.select({ ios: 'padding' })}
-    ></KeyboardAvoidingView>
+    >
+      <Pressable style={{ flex: 1 }} onPress={() => Keyboard.dismiss()}>
+        {children}
+      </Pressable>
+    </KeyboardAvoidingView>
   );
 };
+
+SafeInputView.propTypes = {
+  children: PropTypes.node,
+};
+
+export default SafeInputView;
