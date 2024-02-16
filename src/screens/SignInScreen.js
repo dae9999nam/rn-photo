@@ -49,16 +49,15 @@ const SignInScreen = () => {
           onChangeText={(text) => setPassword(text.trim())}
           inputType={InputTypes.PASSWORD}
           returnKeyType={ReturnKeyTypes.DONE}
+          onSubmitEditing={onSubmit}
+          styles={{ container: { marginBottom: 20 } }}
         />
         <Button
-          title="Sign up"
-          onPress={() => navigation.navigate(AuthRoutes.SIGN_UP)}
-          styles={{
-            container: {
-              paddingHorizontal: 20,
-              marginTop: 20,
-            },
-          }}
+          title="로그인"
+          onPress={onSubmit}
+          disabled={disabled}
+          isLoading={isLoading}
+          styles={{ container: { marginTop: 20 } }}
         />
       </View>
     </SafeInputView>
@@ -80,6 +79,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
+    paddingHorizontal: 20,
   },
 });
 
