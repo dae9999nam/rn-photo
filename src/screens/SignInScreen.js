@@ -1,5 +1,5 @@
 import { useNavigation } from '@react-navigation/native';
-import { StyleSheet, Text, View } from 'react-native';
+import { Keyboard, StyleSheet, Text, View } from 'react-native';
 import { AuthRoutes } from '../navigations/routes';
 import Input, { ReturnKeyTypes, InputTypes } from '../components/Input';
 import { useEffect, useRef, useState } from 'react';
@@ -21,6 +21,15 @@ const SignInScreen = () => {
   useEffect(() => {
     setDisabled(!email || !password);
   }, [email, password]);
+
+  const onSubmit = () => {
+    Keyboard.dismiss();
+    if (!disabled && !isLoading) {
+      setIsLoading(true);
+      console.log(email, password);
+      setIsLoading(false);
+    }
+  };
 
   return (
     <SafeInputView>
