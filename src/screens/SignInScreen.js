@@ -36,13 +36,15 @@ const SignInScreen = () => {
       <View style={[styles.container, { padding: top }]}>
         <Text>Sign In</Text>
         <Input
-          styles={inputStyles}
           value={email}
           onChangeText={(text) => setEmail(text.trim())}
           inputType={InputTypes.EMAIL}
           returnKeyType={ReturnKeyTypes.NEXT}
+          onSubmitEditing={() => passwordRef.current.focus()}
+          styles={{ container: { marginBottom: 20 } }}
         />
         <Input
+          ref={passwordRef}
           value={password}
           onChangeText={(text) => setPassword(text.trim())}
           inputType={InputTypes.PASSWORD}
