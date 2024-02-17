@@ -34,7 +34,7 @@ const SignInScreen = () => {
 
   return (
     <SafeInputView>
-      <View style={[styles.container, { padding: top }]}>
+      <View style={[styles.container, { paddingTop: top }]}>
         <Text>Sign In</Text>
         <Input
           value={email}
@@ -69,16 +69,6 @@ const SignInScreen = () => {
     </SafeInputView>
   );
 };
-
-const inputStyles = StyleSheet.create({
-  container: {
-    marginBottom: 20,
-    paddingHorizontal: 20,
-  },
-  input: {
-    borderWidth: 1,
-  },
-});
 
 const styles = StyleSheet.create({
   container: {
