@@ -5,7 +5,7 @@ import { PRIMARY } from '../colors';
 const TextButton = ({ styles, title, onPress, hitSlop }) => {
   return (
     <Pressable
-      style={styles.button}
+      style={styles?.button}
       hitSlop={hitSlop ? hitSlop : 10}
       onPress={onPress}
     >
