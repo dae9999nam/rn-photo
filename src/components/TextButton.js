@@ -13,3 +13,20 @@ const TextButton = ({ styles, title, onPress, hitSlop }) => {
     </Pressable>
   );
 };
+
+TextButton.propTypes = {
+  styles: PropTypes.object,
+  title: PropTypes.string.isRequired,
+  onPress: PropTypes.func.isRequired,
+  hitSlop: PropTypes.number,
+};
+
+const defaultStyles = StyleSheet.create({
+  title: {
+    color: PRIMARY.DEFAULT,
+    fontWeight: '700',
+    fontSize: 16,
+  },
+});
+
+export default TextButton;
