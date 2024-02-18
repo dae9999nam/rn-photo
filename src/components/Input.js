@@ -44,7 +44,7 @@ const Input = forwardRef(({ inputType, styles, ...props }, ref) => {
   const [isFocused, setIsFocused] = useState(false);
 
   return (
-    <View style={(defaultStyles.container, styles?.container)}>
+    <View style={[defaultStyles.container, styles?.container]}>
       <Text
         style={[
           defaultStyles.title,
