@@ -46,7 +46,9 @@ const SignInScreen = () => {
             resizeMode="cover"
           />
         </View>
-        <View style={[styles.form, { paddingBottom: bottom }]}>
+        <View
+          style={[styles.form, { paddingBottom: bottom ? bottom + 10 : 40 }]}
+        >
           <Input
             value={email}
             onChangeText={(text) => setEmail(text.trim())}
