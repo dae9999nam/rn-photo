@@ -15,15 +15,17 @@ const SignUpScreen = () => {
   const { top, bottom } = useSafeAreaInsets();
 
   const passwordRef = useRef();
+  const passwordConfirmRef = useRef();
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [passwordConfirm, setPasswordConfirm] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [disabled, setDisabled] = useState(true);
 
   useEffect(() => {
-    setDisabled(!email || !password);
-  }, [email, password]);
+    setDisabled(!email || !password || password !== passwordConfirm);
+  }, [email, password, passwordConfirm]);
 
   const onSubmit = () => {
     Keyboard.dismiss();
@@ -57,11 +59,22 @@ const SignUpScreen = () => {
             onSubmitEditing={() => passwordRef.current.focus()}
             styles={{ container: { marginBottom: 20 } }}
           />
+
           <Input
             ref={passwordRef}
             value={password}
             onChangeText={(text) => setPassword(text.trim())}
             inputType={InputTypes.PASSWORD}
+            returnKeyType={ReturnKeyTypes.NEXT}
+            onSubmitEditing={() => passwordConfirmRef.current.focus()}
+            styles={{ container: { marginBottom: 20 } }}
+          />
+
+          <Input
+            ref={passwordConfirmRef}
+            value={passwordConfirm}
+            onChangeText={(text) => setPasswordConfirm(text.trim())}
+            inputType={InputTypes.PASSWORD_CONFIRM}
             returnKeyType={ReturnKeyTypes.DONE}
             onSubmitEditing={onSubmit}
             styles={{ container: { marginBottom: 20 } }}
