@@ -14,6 +14,12 @@ export const InputTypes = {
   PASSWORD: 'PASSWORD',
 };
 
+const PasswordProps = {
+  keyboardType: 'default',
+  secureTextEntry: true,
+  iconName: { active: 'lock', inactive: 'lock-outline' },
+};
+
 const InputTypeProps = {
   EMAIL: {
     title: 'EMAIL',
@@ -28,6 +34,11 @@ const InputTypeProps = {
     keyboardType: 'default',
     secureTextEntry: true,
     iconName: { active: 'lock', inactive: 'lock-outline' },
+  },
+  PASSWORD_CONFIRM: {
+    title: 'PASSWORD CONFIRM',
+    placeholder: 'PASSWORD CONFIRM',
+    ...PasswordProps,
   },
 };
 
