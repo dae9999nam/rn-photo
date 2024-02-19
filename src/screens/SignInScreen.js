@@ -1,5 +1,5 @@
 import { useNavigation } from '@react-navigation/native';
-import { Image, Keyboard, StyleSheet, View } from 'react-native';
+import { Image, Keyboard, StyleSheet, View, ScrollView } from 'react-native';
 import { AuthRoutes } from '../navigations/routes';
 import Input, { ReturnKeyTypes, InputTypes } from '../components/Input';
 import { useEffect, useRef, useState } from 'react';
@@ -46,8 +46,11 @@ const SignInScreen = () => {
             resizeMode="cover"
           />
         </View>
-        <View
+        <ScrollView
           style={[styles.form, { paddingBottom: bottom ? bottom + 10 : 40 }]}
+          contentContainerStyle={{ alignItems: 'center' }}
+          bounces={false}
+          keyboardShouldPersistTaps="always"
         >
           <Input
             value={email}
@@ -80,7 +83,7 @@ const SignInScreen = () => {
             title={'회원가입'}
             onPress={() => navigation.navigate(AuthRoutes.SIGN_UP)}
           />
-        </View>
+        </ScrollView>
       </View>
     </SafeInputView>
   );
@@ -92,7 +95,7 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-end',
   },
   form: {
-    alignItems: 'center',
+    flexGrow: 0,
     backgroundColor: WHITE,
     paddingHorizontal: 20,
     paddingTop: 40,
