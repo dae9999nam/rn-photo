@@ -22,15 +22,14 @@ const SignInScreen = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [disabled, setDisabled] = useState(true);
 
-  useEffect(() => {
-    console.log('SignIn Mount');
-    return () => console.log('SignIn Unmount');
-  }, []);
-
   useFocusEffect(
     useCallback(() => {
-      console.log('Focus');
-      return () => console.log('cleanup Focus');
+      return () => {
+        setEmail('');
+        setPassword('');
+        setIsLoading(false);
+        setDisabled(true);
+      };
     }, [])
   );
 
