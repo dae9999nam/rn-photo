@@ -1,8 +1,8 @@
-import { useNavigation } from '@react-navigation/native';
+import { useFocusEffect, useNavigation } from '@react-navigation/native';
 import { Image, Keyboard, StyleSheet, View, ScrollView } from 'react-native';
 import { AuthRoutes } from '../navigations/routes';
 import Input, { ReturnKeyTypes, InputTypes } from '../components/Input';
-import { useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import Button from '../components/Button';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import SafeInputView from '../components/SafeInputView';
@@ -21,6 +21,18 @@ const SignInScreen = () => {
   const [password, setPassword] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [disabled, setDisabled] = useState(true);
+
+  useEffect(() => {
+    console.log('SignIn Mount');
+    return () => console.log('SignIn Unmount');
+  }, []);
+
+  useFocusEffect(
+    useCallback(() => {
+      console.log('Focus');
+      return () => console.log('cleanup Focus');
+    }, [])
+  );
 
   useEffect(() => {
     setDisabled(!email || !password);
