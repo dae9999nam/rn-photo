@@ -3,6 +3,7 @@ import AuthStack from './AuthStack';
 import * as SplashScreen from 'expo-splash-screen';
 import { useEffect, useState } from 'react';
 import { Asset } from 'expo-asset';
+import { initFirebase } from '../api/firebase';
 
 const Navigation = () => {
   const [isReady, SetISReady] = useState(false);
@@ -14,6 +15,7 @@ const Navigation = () => {
         await Asset.fromModule(
           require('../../assets/cover.png')
         ).downloadAsync();
+        const app = initFirebase();
       } catch (e) {
         //eslint-disabled-next-line no-console
         console.log(e);
