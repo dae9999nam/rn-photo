@@ -23,6 +23,7 @@ import {
   initAuthForm,
 } from '../reducers/authFormReducer';
 import { getAuthErrorMessages, signIn } from '../api/auth';
+import { useUserState } from '../contexts/USerContext';
 
 const SignInScreen = () => {
   const navigation = useNavigation();
@@ -30,6 +31,8 @@ const SignInScreen = () => {
 
   const passwordRef = useRef();
   const [form, dispatch] = useReducer(authFormReducer, initAuthForm);
+
+  const [, setUser] = useUserState();
 
   useFocusEffect(
     useCallback(() => {
@@ -53,8 +56,9 @@ const SignInScreen = () => {
       dispatch({ type: AuthFormTypes.TOGGLE_LOADING });
       try {
         const user = await signIn(form); // == const user = await signIn({email: form.email, password: form.password})
-        console.log(user);
+        setUser(user); // user 객체를 UserContext user에 저장
       } catch (e) {
+        //로그인에 실패한 경우 에러메세지 alert
         const message = getAuthErrorMessages(e.code);
         Alert.alert('로그인 실패', message);
       }
