@@ -4,8 +4,11 @@ import * as SplashScreen from 'expo-splash-screen';
 import { useEffect, useState } from 'react';
 import { Asset } from 'expo-asset';
 import { initFirebase } from '../api/firebase';
+import { useUserState } from '../contexts/USerContext';
+import MainStack from './MainStack';
 
 const Navigation = () => {
+  const [user] = useUserState();
   const [isReady, SetISReady] = useState(false);
 
   useEffect(() => {
@@ -37,7 +40,7 @@ const Navigation = () => {
 
   return (
     <NavigationContainer onReady={onReady}>
-      <AuthStack />
+      {user.uid ? <MainStack /> : <AuthStack />}
     </NavigationContainer>
   );
 };
