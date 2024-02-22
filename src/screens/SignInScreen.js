@@ -15,6 +15,7 @@ import {
   AuthFormTypes,
   initAuthForm,
 } from '../reducers/authFormReducer';
+import { signIn } from '../api/auth';
 
 const SignInScreen = () => {
   const navigation = useNavigation();
@@ -38,12 +39,13 @@ const SignInScreen = () => {
       payload: { disabled, ...payload },
     });
   };
-
-  const onSubmit = () => {
+  //signIn 함수는 비동기 함수
+  const onSubmit = async () => {
     Keyboard.dismiss();
     if (!form.disabled && !form.isLoading) {
       dispatch({ type: AuthFormTypes.TOGGLE_LOADING });
-      console.log(form.email, form.password);
+      const user = await signIn(form);
+      console.log(user); // == const user = await signIn({email: form.email, password: form.password})
       dispatch({ type: AuthFormTypes.TOGGLE_LOADING });
     }
   };
