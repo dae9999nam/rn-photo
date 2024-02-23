@@ -1,10 +1,12 @@
 import {
   AuthErrorCodes,
+  createUserWithEmailAndPassword,
   getAuth,
   signInWithEmailPassword,
 } from 'firebase/auth';
 
 export const getAuthErrorMessages = (errorCode) => {
+  //로그인 과정에서 발생할 수 있는 에러코드
   switch (errorCode) {
     case AuthErrorCodes.USER_DELETED:
       return '계정을 찾을 수 없습니다.';
@@ -19,5 +21,14 @@ export const getAuthErrorMessages = (errorCode) => {
 
 export const signIn = async ({ email, password }) => {
   const { user } = await signInWithEmailPassword(getAuth(), email, password);
+  return user;
+};
+
+export const signUp = async ({ email, password }) => {
+  const { user } = await createUserWithEmailAndPassword(
+    getAuth(),
+    email,
+    password
+  );
   return user;
 };
