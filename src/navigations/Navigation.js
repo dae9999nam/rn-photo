@@ -6,10 +6,11 @@ import { Asset } from 'expo-asset';
 import { initFirebase } from '../api/firebase';
 import { useUserState } from '../contexts/USerContext';
 import MainStack from './MainStack';
+import { onAuthStateChanged } from 'firebase/auth';
 
 const Navigation = () => {
-  const [user] = useUserState();
-  const [isReady, SetISReady] = useState(false);
+  const [user, setUser] = useUserState();
+  const [isReady, SetIsReady] = useState(false);
 
   useEffect(() => {
     (async () => {
@@ -19,14 +20,20 @@ const Navigation = () => {
           require('../../assets/cover.png')
         ).downloadAsync();
         const app = initFirebase();
+        const unsubscribe = onAuthStateChanged((user) => {
+          if (user) {
+            setUser(user);
+          }
+          SetIsReady(true);
+          unsubscribe();
+        });
       } catch (e) {
         //eslint-disabled-next-line no-console
         console.log(e);
-      } finally {
-        SetISReady(true);
+        SetIsReady(true);
       }
     })();
-  }, []);
+  }, [setUser]);
 
   const onReady = async () => {
     if (isReady) {

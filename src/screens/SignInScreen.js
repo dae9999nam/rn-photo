@@ -60,7 +60,12 @@ const SignInScreen = () => {
       } catch (e) {
         //로그인에 실패한 경우 에러메세지 alert
         const message = getAuthErrorMessages(e.code);
-        Alert.alert('로그인 실패', message);
+        Alert.alert('로그인 실패', message, [
+          {
+            text: '',
+            onPress: () => dispatch({ type: AuthFormTypes.TOGGLE_LOADING }),
+          },
+        ]);
       }
       dispatch({ type: AuthFormTypes.TOGGLE_LOADING });
     }
