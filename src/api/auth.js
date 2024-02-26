@@ -2,8 +2,8 @@ import {
   AuthErrorCodes,
   createUserWithEmailAndPassword,
   getAuth,
-  signInWithEmailPassword,
-  onAuthStateChanged as onAuthStateChangedFireBase, //인증상태를 유지해주는 기능과 인증 상태가 변경되었을때 알려주는 함수
+  signInWithEmailAndPassword,
+  onAuthStateChanged as onAuthStateChangedFireBase, //인증상태를 유지해주는 기능과 인증 상태가 변경되었을때 알려주는 함수 - 함수 이름을 변경한 버전
 } from 'firebase/auth';
 
 export const getAuthErrorMessages = (errorCode) => {
@@ -25,7 +25,7 @@ export const getAuthErrorMessages = (errorCode) => {
 };
 
 export const signIn = async ({ email, password }) => {
-  const { user } = await signInWithEmailPassword(getAuth(), email, password);
+  const { user } = await signInWithEmailAndPassword(getAuth(), email, password);
   return user;
 };
 

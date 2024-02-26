@@ -108,7 +108,7 @@ const SignUpScreen = () => {
             ref={passwordConfirmRef}
             value={form.passwordConfirm}
             onChangeText={(text) =>
-              updateForm({ passwordConfirmRef: text.trim() })
+              updateForm({ passwordConfirm: text.trim() })
             }
             inputType={InputTypes.PASSWORD_CONFIRM}
             returnKeyType={ReturnKeyTypes.DONE}

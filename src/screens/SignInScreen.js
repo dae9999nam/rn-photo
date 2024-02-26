@@ -30,6 +30,7 @@ const SignInScreen = () => {
   const { top, bottom } = useSafeAreaInsets();
 
   const passwordRef = useRef();
+
   const [form, dispatch] = useReducer(authFormReducer, initAuthForm);
 
   const [, setUser] = useUserState();
