@@ -4,9 +4,10 @@ import * as SplashScreen from 'expo-splash-screen';
 import { useEffect, useState } from 'react';
 import { Asset } from 'expo-asset';
 import { initFirebase } from '../api/firebase';
-import { useUserState } from '../contexts/USerContext';
+import { useUserState } from '../contexts/UserContext';
 import MainStack from './MainStack';
 import { onAuthStateChanged } from 'firebase/auth';
+import ContentTab from './ContentTab';
 
 const Navigation = () => {
   const [user, setUser] = useUserState();
@@ -47,7 +48,7 @@ const Navigation = () => {
 
   return (
     <NavigationContainer onReady={onReady}>
-      {user.uid ? <MainStack /> : <AuthStack />}
+      {user.uid ? <ContentTab /> : <AuthStack />}
     </NavigationContainer>
   );
 };

@@ -22,7 +22,7 @@ import {
   initAuthForm,
 } from '../reducers/authFormReducer';
 import { getAuthErrorMessages, signUp } from '../api/auth';
-import { useUserState } from '../contexts/USerContext';
+import { useUserState } from '../contexts/UserContext';
 
 const SignUpScreen = () => {
   const navigation = useNavigation();

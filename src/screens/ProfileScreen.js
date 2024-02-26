@@ -1,5 +1,5 @@
 import { Button, StyleSheet, Text, View } from 'react-native';
-import { useUserState } from '../contexts/USerContext';
+import { useUserState } from '../contexts/UserContext';
 
 const ProfileScreen = () => {
   const [, setUser] = useUserState();
