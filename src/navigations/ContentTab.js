@@ -5,6 +5,7 @@ import MapScreen from '../screens/MapScreen';
 import ProfileScreen from '../screens/ProfileScreen';
 import { ContentRoutes } from './routes';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
+import { GRAY, PRIMARY } from '../colors';
 
 const getTabBarIcon = ({ focused, color, size, name }) => {
   const iconName = focused ? name : `${name}-outline`;
@@ -17,7 +18,11 @@ const ContentTab = () => {
   return (
     <Tab.Navigator
       initialRouteName={ContentRoutes.MAP}
-      screenOptions={{ headerShown: false }}
+      screenOptions={{
+        headerShown: false,
+        tabBarActiveTintColor: PRIMARY.DARK,
+        tabBarInactiveTintColor: GRAY.DARK,
+      }}
     >
       <Tab.Screen
         name={ContentRoutes.HOME}
