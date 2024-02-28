@@ -4,16 +4,49 @@ import ListScreen from '../screens/ListScreen';
 import MapScreen from '../screens/MapScreen';
 import ProfileScreen from '../screens/ProfileScreen';
 import { ContentRoutes } from './routes';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
+
+const getTabBarIcon = ({ focused, color, size, name }) => {
+  const iconName = focused ? name : `${name}-outline`;
+  return <MaterialCommunityIcons name={iconName} size={size} color={color} />;
+};
 
 const Tab = createBottomTabNavigator();
 
 const ContentTab = () => {
   return (
-    <Tab.Navigator>
-      <Tab.Screen name={ContentRoutes.HOME} component={HomeScreen} />
-      <Tab.Screen name={ContentRoutes.LIST} component={ListScreen} />
-      <Tab.Screen name={ContentRoutes.MAP} component={MapScreen} />
-      <Tab.Screen name={ContentRoutes.PROFILE} component={ProfileScreen} />
+    <Tab.Navigator
+      initialRouteName={ContentRoutes.MAP}
+      screenOptions={{ headerShown: false }}
+    >
+      <Tab.Screen
+        name={ContentRoutes.HOME}
+        component={HomeScreen}
+        options={{
+          tabBarIcon: (props) => getTabBarIcon({ ...props, name: 'home' }),
+        }}
+      />
+      <Tab.Screen
+        name={ContentRoutes.LIST}
+        component={ListScreen}
+        options={{
+          tabBarIcon: (props) => getTabBarIcon({ ...props, name: 'post' }),
+        }}
+      />
+      <Tab.Screen
+        name={ContentRoutes.MAP}
+        component={MapScreen}
+        options={{
+          tabBarIcon: (props) => getTabBarIcon({ ...props, name: 'map' }),
+        }}
+      />
+      <Tab.Screen
+        name={ContentRoutes.PROFILE}
+        component={ProfileScreen}
+        options={{
+          tabBarIcon: (props) => getTabBarIcon({ ...props, name: 'account' }),
+        }}
+      />
     </Tab.Navigator>
   );
 };

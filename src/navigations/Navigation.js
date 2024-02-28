@@ -11,6 +11,7 @@ import ContentTab from './ContentTab';
 
 const Navigation = () => {
   const [user, setUser] = useUserState(); /////
+
   const [isReady, SetIsReady] = useState(false);
 
   useEffect(() => {
