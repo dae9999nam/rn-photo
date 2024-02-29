@@ -4,7 +4,7 @@ export const AuthRoutes = {
 };
 
 export const MainRoutes = {
-  PROFILE: 'Profile',
+  CONETENT_TAB: 'ContentTab',
 };
 
 export const ContentRoutes = {
