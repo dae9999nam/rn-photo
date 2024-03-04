@@ -5,6 +5,7 @@ export const AuthRoutes = {
 
 export const MainRoutes = {
   CONETENT_TAB: 'ContentTab',
+  SELECT_PHOTO: 'SelectPhotos',
 };
 
 export const ContentRoutes = {
