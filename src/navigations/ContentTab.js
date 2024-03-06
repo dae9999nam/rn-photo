@@ -14,6 +14,8 @@ const getTabBarIcon = ({ focused, color, size, name }) => {
 
 const Tab = createBottomTabNavigator();
 
+const AddButtonScreen = () => null;
+
 const ContentTab = () => {
   return (
     <Tab.Navigator
@@ -40,6 +42,7 @@ const ContentTab = () => {
           tabBarIcon: (props) => getTabBarIcon({ ...props, name: 'post' }),
         }}
       />
+      <Tab.Screen name={'AddButton'} component={AddButtonScreen} />
       <Tab.Screen
         name={ContentRoutes.MAP}
         component={MapScreen}
